@@ -18,8 +18,12 @@ class CGView3: UIView {
         
         let context = UIGraphicsGetCurrentContext()
         self.drawRectWithContext(context: context!)
+        self.drawRectByUIKitWithContext(context: context!)
     }
 
+    /// Context直接回执
+    ///
+    /// - Parameter context:
     public func drawRectWithContext(context: CGContext) {
         let rect = CGRect.init(x: 20, y: 0, width: 280, height: 50)
         context.addRect(rect)
@@ -27,4 +31,19 @@ class CGView3: UIView {
         context.drawPath(using: CGPathDrawingMode.fillStroke)
     }
     
+    
+    /// UIKit API调用绘制
+    ///
+    /// - Parameter context:
+    public func drawRectByUIKitWithContext(context: CGContext) {
+        let rect = CGRect.init(x: 20.0, y: 60.0, width: 280.0, height: 50.0)
+        let rect2 = CGRect.init(x: 20.0, y: 120.0, width: 280.0, height: 50.0)
+        
+        UIColor.yellow.set()
+        UIRectFill(rect)
+        
+        UIColor.red.setFill()
+        UIRectFill(rect2)
+        
+    }
 }

@@ -53,6 +53,7 @@
 		962686EC1E8F4E5000E0972F /* CGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView.swift; sourceTree = "<group>"; };
 		962686EE1E8F909600E0972F /* CGView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView2.swift; sourceTree = "<group>"; };
 		962686F01E8F9B8700E0972F /* CGView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView3.swift; sourceTree = "<group>"; };
+		9687A7E11E975BD10099B57A /* corePlay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = corePlay.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +109,7 @@
 				962686EC1E8F4E5000E0972F /* CGView.swift */,
 				962686EE1E8F909600E0972F /* CGView2.swift */,
 				962686F01E8F9B8700E0972F /* CGView3.swift */,
+				9687A7E11E975BD10099B57A /* corePlay.playground */,
 				962686C21E8F4E3A00E0972F /* Main.storyboard */,
 				962686C51E8F4E3A00E0972F /* Assets.xcassets */,
 				962686C71E8F4E3A00E0972F /* LaunchScreen.storyboard */,
@@ -528,6 +530,7 @@
 				962686E51E8F4E3A00E0972F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		962686E61E8F4E3A00E0972F /* Build configuration list for PBXNativeTarget "CoreGraphicsDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +539,7 @@
 				962686E81E8F4E3A00E0972F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		962686E91E8F4E3A00E0972F /* Build configuration list for PBXNativeTarget "CoreGraphicsDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +548,7 @@
 				962686EB1E8F4E3A00E0972F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
