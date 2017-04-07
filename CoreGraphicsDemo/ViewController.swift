@@ -24,6 +24,11 @@ class ViewController: UIViewController {
         let cgView3 = CGView3.init(frame: CGRect.init(x: 0, y: 164, width: self.view.frame.width, height: self.view.frame.height - 110))
         cgView3.backgroundColor = UIColor.white
         self.view.addSubview(cgView3)
+        
+        let cgView4 = CGView4.init(frame: .init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        cgView4.backgroundColor = UIColor.white
+        self.view.addSubview(cgView4)
+        
     }
 
     override func didReceiveMemoryWarning() {
