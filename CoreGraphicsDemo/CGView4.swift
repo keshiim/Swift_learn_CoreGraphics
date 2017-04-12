@@ -21,6 +21,7 @@ class CGView4: UIView {
         
     }
     
+    
     public func drawText(context: CGContext) -> Void {
         let str = "使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制使用CoreGraphics进行文字绘制"
         let rect = CGRect.init(x: 20, y: 20, width: 280, height: 200)
