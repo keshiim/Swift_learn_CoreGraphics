@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96231E531E9E444900DBE660 /* CGView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96231E521E9E444900DBE660 /* CGView5.swift */; };
 		962686BF1E8F4E3900E0972F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686BE1E8F4E3900E0972F /* AppDelegate.swift */; };
 		962686C11E8F4E3A00E0972F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686C01E8F4E3A00E0972F /* ViewController.swift */; };
 		962686C41E8F4E3A00E0972F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962686C21E8F4E3A00E0972F /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 		962686ED1E8F4E5000E0972F /* CGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686EC1E8F4E5000E0972F /* CGView.swift */; };
 		962686EF1E8F909600E0972F /* CGView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686EE1E8F909600E0972F /* CGView2.swift */; };
 		962686F11E8F9B8700E0972F /* CGView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686F01E8F9B8700E0972F /* CGView3.swift */; };
+		964019EC1EA0792E0064849C /* CGView6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019EB1EA0792E0064849C /* CGView6.swift */; };
 		9687A7E31E9764E40099B57A /* CGView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687A7E21E9764E40099B57A /* CGView4.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		96231E521E9E444900DBE660 /* CGView5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView5.swift; sourceTree = "<group>"; };
 		962686BB1E8F4E3900E0972F /* CoreGraphicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreGraphicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		962686BE1E8F4E3900E0972F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		962686C01E8F4E3A00E0972F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		962686EC1E8F4E5000E0972F /* CGView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView.swift; sourceTree = "<group>"; };
 		962686EE1E8F909600E0972F /* CGView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView2.swift; sourceTree = "<group>"; };
 		962686F01E8F9B8700E0972F /* CGView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView3.swift; sourceTree = "<group>"; };
+		964019EB1EA0792E0064849C /* CGView6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView6.swift; sourceTree = "<group>"; };
 		9687A7E11E975BD10099B57A /* corePlay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = corePlay.playground; sourceTree = "<group>"; };
 		9687A7E21E9764E40099B57A /* CGView4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +116,8 @@
 				962686EE1E8F909600E0972F /* CGView2.swift */,
 				962686F01E8F9B8700E0972F /* CGView3.swift */,
 				9687A7E21E9764E40099B57A /* CGView4.swift */,
+				96231E521E9E444900DBE660 /* CGView5.swift */,
+				964019EB1EA0792E0064849C /* CGView6.swift */,
 				9687A7E11E975BD10099B57A /* corePlay.playground */,
 				962686C21E8F4E3A00E0972F /* Main.storyboard */,
 				962686C51E8F4E3A00E0972F /* Assets.xcassets */,
@@ -279,6 +285,8 @@
 				962686ED1E8F4E5000E0972F /* CGView.swift in Sources */,
 				962686C11E8F4E3A00E0972F /* ViewController.swift in Sources */,
 				962686F11E8F9B8700E0972F /* CGView3.swift in Sources */,
+				964019EC1EA0792E0064849C /* CGView6.swift in Sources */,
+				96231E531E9E444900DBE660 /* CGView5.swift in Sources */,
 				962686BF1E8F4E3900E0972F /* AppDelegate.swift in Sources */,
 				962686EF1E8F909600E0972F /* CGView2.swift in Sources */,
 				9687A7E31E9764E40099B57A /* CGView4.swift in Sources */,
