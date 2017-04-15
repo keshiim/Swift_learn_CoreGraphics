@@ -19,6 +19,9 @@
 		962686EF1E8F909600E0972F /* CGView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686EE1E8F909600E0972F /* CGView2.swift */; };
 		962686F11E8F9B8700E0972F /* CGView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962686F01E8F9B8700E0972F /* CGView3.swift */; };
 		964019EC1EA0792E0064849C /* CGView6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019EB1EA0792E0064849C /* CGView6.swift */; };
+		964019EE1EA0B5EA0064849C /* CGView7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019ED1EA0B5EA0064849C /* CGView7.swift */; };
+		964019F01EA0BF2B0064849C /* CGView8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019EF1EA0BF2B0064849C /* CGView8.swift */; };
+		964019F21EA0D40A0064849C /* CGView10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019F11EA0D40A0064849C /* CGView10.swift */; };
 		9687A7E31E9764E40099B57A /* CGView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687A7E21E9764E40099B57A /* CGView4.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		962686EE1E8F909600E0972F /* CGView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView2.swift; sourceTree = "<group>"; };
 		962686F01E8F9B8700E0972F /* CGView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView3.swift; sourceTree = "<group>"; };
 		964019EB1EA0792E0064849C /* CGView6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView6.swift; sourceTree = "<group>"; };
+		964019ED1EA0B5EA0064849C /* CGView7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView7.swift; sourceTree = "<group>"; };
+		964019EF1EA0BF2B0064849C /* CGView8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView8.swift; sourceTree = "<group>"; };
+		964019F11EA0D40A0064849C /* CGView10.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView10.swift; sourceTree = "<group>"; };
 		9687A7E11E975BD10099B57A /* corePlay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = corePlay.playground; sourceTree = "<group>"; };
 		9687A7E21E9764E40099B57A /* CGView4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +124,9 @@
 				9687A7E21E9764E40099B57A /* CGView4.swift */,
 				96231E521E9E444900DBE660 /* CGView5.swift */,
 				964019EB1EA0792E0064849C /* CGView6.swift */,
+				964019ED1EA0B5EA0064849C /* CGView7.swift */,
+				964019EF1EA0BF2B0064849C /* CGView8.swift */,
+				964019F11EA0D40A0064849C /* CGView10.swift */,
 				9687A7E11E975BD10099B57A /* corePlay.playground */,
 				962686C21E8F4E3A00E0972F /* Main.storyboard */,
 				962686C51E8F4E3A00E0972F /* Assets.xcassets */,
@@ -285,9 +294,12 @@
 				962686ED1E8F4E5000E0972F /* CGView.swift in Sources */,
 				962686C11E8F4E3A00E0972F /* ViewController.swift in Sources */,
 				962686F11E8F9B8700E0972F /* CGView3.swift in Sources */,
+				964019F21EA0D40A0064849C /* CGView10.swift in Sources */,
 				964019EC1EA0792E0064849C /* CGView6.swift in Sources */,
 				96231E531E9E444900DBE660 /* CGView5.swift in Sources */,
+				964019EE1EA0B5EA0064849C /* CGView7.swift in Sources */,
 				962686BF1E8F4E3900E0972F /* AppDelegate.swift in Sources */,
+				964019F01EA0BF2B0064849C /* CGView8.swift in Sources */,
 				962686EF1E8F909600E0972F /* CGView2.swift in Sources */,
 				9687A7E31E9764E40099B57A /* CGView4.swift in Sources */,
 			);
