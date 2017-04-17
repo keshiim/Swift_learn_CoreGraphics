@@ -7,6 +7,43 @@
 //
 
 import UIKit
+class View1: UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        print("view 1")
+        if self.point(inside: point, with: event) {
+            NSLog("in View 1")
+        }
+        
+//        for (UIView *subview in [self.subviews reverseObjectEnumerator]) {
+//            CGPoint convertedPoint = [subview convertPoint:point fromView:self];
+//            UIView *hitTestView = [subview hitTest:convertedPoint withEvent:event];
+//            if (hitTestView) {
+//                return hitTestView;
+//            }
+//        }
+        for subview in self.subviews {
+            if subview is UIButton {
+                let convertedPoint: CGPoint! = subview.convert(point, from: self)
+                if (subview.hitTest(convertedPoint, with: event) != nil) {
+                    return subview
+                }
+            }
+        }
+        return super.hitTest(point, with: event)
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        
+        return super.point(inside: point, with: event)
+    }
+}
+
+class View2: UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        print("view 2")
+        return super.hitTest(point, with: event)
+    }
+}
 
 class ViewController: UIViewController {
 
@@ -52,9 +89,26 @@ class ViewController: UIViewController {
 //        self.view.addSubview(imageView)
         
         self.drawContentToPdfContext()
+        
+        let view1 = View1.init(frame: .init(x: 0, y: 44, width: self.view.frame.width, height: 44))
+        view1.backgroundColor = UIColor.red
+        self.view.addSubview(view1)
+        
+        let view2 = View2.init(frame: .init(x: 0, y: 30, width: 100, height: 44))
+        view2.backgroundColor = UIColor.blue
+        view1.addSubview(view2)
+        
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect.init(x: 100, y: 30, width: 60, height: 44)
+        button.setTitle("aaaa", for: UIControlState.normal)
+        button.backgroundColor = UIColor.green
+        button.addTarget(self, action: #selector(buttonAction(button:)), for: UIControlEvents.touchUpInside)
+        view1.addSubview(button)
     }
     
-    
+    func buttonAction(button: UIButton) {
+        print("button action")
+    }
     /// 绘制到位图
     ///
     /// - Returns: UIImage
