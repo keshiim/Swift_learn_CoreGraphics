@@ -107,5 +107,43 @@ extension Int {
     }
 }
 
+protocol TextRepresentable {
+    var textualDescription: String { get }
+}
+
+struct Hamster {
+    var name: String
+    var textualDescription: String {
+        return "A hamster named \(name)"
+    }
+}
+extension Hamster: TextRepresentable {}
+
+//extension Array where Generator.Element: TextRepresentable {
+//    var textualDescription: String {
+//        let itemsAsText = self.map { $0.textualDescription }
+//        return "[" + itemsAsText.joinWithSeparator(", ") + "]"
+//    }
+//}
+
+
+let murrayTheHamster = Hamster(name: "Murray")
+let morganTheHamster = Hamster(name: "Morgan")
+let mauriceTheHamster = Hamster(name: "Maurice")
+let hamsters = [murrayTheHamster, morganTheHamster, mauriceTheHamster]
+//print(hamsters.textualDescription)
+
+
+//泛型
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
 
 
