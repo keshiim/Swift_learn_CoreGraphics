@@ -46,10 +46,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         return _successView
     }()
     
-    lazy var gameTime: CADisplayLink = {
-        let _gameTime: CADisplayLink = CADisplayLink.init(target: self, selector: #selector(refreshAnimation))
-        return _gameTime
-    }()
+    var gameTime: CADisplayLink?
     
     private var nextProgress: CGFloat {
         get {
@@ -106,7 +103,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     
     /// 进度动画
-    func userShapeLayer() -> Void {
+    func useShapeLayer() -> Void {
         isPorgressing = true
         
         if fabs(Double(self.nextProgress) - Double(self.progress)) > eps {
@@ -116,8 +113,8 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
                 self.progress = self.nextProgress
                 self.isPorgressing = false
                 if self.progress == 1 {
-                    isComplete = true
-                    self.endAimation()
+                    self.isComplete = true
+                    self.endAnimation()
                 }
             })
         }
@@ -125,8 +122,18 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     /// 动画关闭方法
     func startAnimation() -> Void {
-        self.stopAnimation()
-        self.gameTime.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
+        if self.gameTime != nil {
+            self.stopAnimation()
+        }
+        self.gameTime = CADisplayLink.init(target: self, selector: #selector(refreshAnimation))
+        self.gameTime?.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
+    }
+    
+    
+    /// 动画关闭方法
+    func stopAnimation() {
+        self.gameTime?.invalidate()
+        self.gameTime = nil;
     }
     
     /// 刷新动画，判断是否需要增加动点
@@ -138,7 +145,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         count += 1
         count %= 50
         if count == 40 {
-            self.readyPointAnimation()
+            self.readyPointAnimation(center: <#CGPoint#>)
         }
     }
     
@@ -160,6 +167,35 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     /// - Parameter point:
     func runPointAnimation(point: CALayer) {
         let keyAnimation: CAKeyframeAnimation = CAKeyframeAnimation.init(keyPath: "position")
+        keyAnimation.path = self.makePointPath(point: point).cgPath
+        keyAnimation.fillMode = kCAFillModeForwards
+        keyAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseIn)
+        keyAnimation.duration = 2
+        keyAnimation.isRemovedOnCompletion = true
+        point.add(keyAnimation, forKey: "moveAnimation")
+        
+        //移除
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            point.removeFromSuperlayer()
+        }
+    }
+    
+    /// 生成曲线路径
+    ///
+    /// - Parameter point: point
+    /// - Returns: path
+    func makePointPath(point: CALayer) -> UIBezierPath {
+        let path = UIBezierPath.init()
+        path.move(to: point.position)
+        //直线
+        path.addLine(to: self.circlePoint)
+        //二元曲线
+        path.addQuadCurve(to: self.circlePoint, controlPoint: <#T##CGPoint#>)
+        return path
+    }
+    
+    /// 结束动画
+    func endAnimation() {
         
     }
     
