@@ -8,6 +8,8 @@
 
 import UIKit
 
+let eps = 1e-6
+
 protocol ZMJProgressing {
     var isPorgressing: Bool { get }
     
@@ -20,11 +22,11 @@ protocol ZMJProgressing {
 class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     /// ZMJProgressing
-    public var progress: CGFloat
+    private(set) public var progress: CGFloat
     
-    public var isComplete: Bool
+    private(set) public var isComplete: Bool
 
-    public var isPorgressing: Bool
+    private(set) public var isPorgressing: Bool
     
     ///私有属性
     lazy var progressView: UIView = {
@@ -46,7 +48,6 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     lazy var gameTime: CADisplayLink = {
         let _gameTime: CADisplayLink = CADisplayLink.init(target: self, selector: #selector(refreshAnimation))
-        _gameTime.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
         return _gameTime
     }()
     
@@ -55,8 +56,8 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
             return self.nextProgress
         }
         
-        set (setter) {
-            self.nextProgress = setter
+        set (newValue) {
+            self.nextProgress = newValue
         }
     }
 
@@ -75,6 +76,9 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     private var count: uint
     
     
+    /// 初始化方法
+    ///
+    /// - Parameter frame:
     override init(frame: CGRect) {
         //初始化参数
         isPorgressing = true
@@ -84,19 +88,85 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         super.init(frame: frame)
         
         self.setNextProgress(nextProgress: 0.0)
+        self.addSubview(self.successView)
+        
+        self.isUserInteractionEnabled = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// 画圆形边界
+    func drawCircleBorder() {
+        self.layer.borderWidth = 3.0
+        self.layer.borderColor = LoaderButtonDefaultColor.cgColor
+        self.layer.cornerRadius = self.frame.width / 2.0
+    }
+    
+    
+    /// 进度动画
+    func userShapeLayer() -> Void {
+        isPorgressing = true
+        
+        if fabs(Double(self.nextProgress) - Double(self.progress)) > eps {
+            UIView.animate(withDuration: 6.18 * fabs(Double(self.nextProgress) - Double(self.progress)), delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+                self.progressView.transform = CGAffineTransform.init(scaleX: self.nextProgress, y: self.nextProgress)
+            }, completion: { (finished: Bool) in
+                self.progress = self.nextProgress
+                self.isPorgressing = false
+                if self.progress == 1 {
+                    isComplete = true
+                    self.endAimation()
+                }
+            })
+        }
+    }
+    
+    /// 动画关闭方法
+    func startAnimation() -> Void {
+        self.stopAnimation()
+        self.gameTime.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
+    }
+    
+    /// 刷新动画，判断是否需要增加动点
+    func refreshAnimation() -> Void {
+        if !self.isPorgressing {
+            self.stopAnimation()
+        }
+        
+        count += 1
+        count %= 50
+        if count == 40 {
+            self.readyPointAnimation()
+        }
+    }
+    
+    /// 进入动画，传入起始坐标点
+    ///
+    /// - Parameter center:
+    func readyPointAnimation(center: CGPoint) {
+        let pointRadius: CGFloat = 8.0
+        let shap: CALayer = CALayer.init()
+        shap.backgroundColor = LoaderButtonDefaultColor.cgColor
+        shap.cornerRadius = pointRadius
+        shap.frame = CGRect.init(x: center.x, y: center.y, width: pointRadius * 2, height: pointRadius * 2)
+        self.layer.addSublayer(shap)
+        self.runPointAnimation(point: shap)
+    }
+    
+    /// 启动动画，向中心吸收
+    ///
+    /// - Parameter point:
+    func runPointAnimation(point: CALayer) {
+        let keyAnimation: CAKeyframeAnimation = CAKeyframeAnimation.init(keyPath: "position")
+        
+    }
+    
     public func setNextProgress(nextProgress: CGFloat) {
         self.nextProgress = nextProgress
         self.useShapeLayer()
     }
     
-    func refreshAnimation() {
-        
-    }
 
 }
