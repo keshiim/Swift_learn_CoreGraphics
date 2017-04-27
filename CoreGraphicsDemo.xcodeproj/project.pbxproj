@@ -23,6 +23,8 @@
 		964019F01EA0BF2B0064849C /* CGView8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019EF1EA0BF2B0064849C /* CGView8.swift */; };
 		964019F21EA0D40A0064849C /* CGView10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964019F11EA0D40A0064849C /* CGView10.swift */; };
 		9687A7E31E9764E40099B57A /* CGView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687A7E21E9764E40099B57A /* CGView4.swift */; };
+		96CB43F41EB0857600498116 /* ZMJLoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB43F31EB0857600498116 /* ZMJLoaderButton.swift */; };
+		96CB43F61EB0862200498116 /* ZMJLoaderButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB43F51EB0862200498116 /* ZMJLoaderButtonProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		964019F11EA0D40A0064849C /* CGView10.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView10.swift; sourceTree = "<group>"; };
 		9687A7E11E975BD10099B57A /* corePlay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = corePlay.playground; sourceTree = "<group>"; };
 		9687A7E21E9764E40099B57A /* CGView4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGView4.swift; sourceTree = "<group>"; };
+		96CB43F31EB0857600498116 /* ZMJLoaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMJLoaderButton.swift; sourceTree = "<group>"; };
+		96CB43F51EB0862200498116 /* ZMJLoaderButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMJLoaderButtonProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 			children = (
 				962686BE1E8F4E3900E0972F /* AppDelegate.swift */,
 				962686C01E8F4E3A00E0972F /* ViewController.swift */,
+				96CB43F31EB0857600498116 /* ZMJLoaderButton.swift */,
+				96CB43F51EB0862200498116 /* ZMJLoaderButtonProgressView.swift */,
 				962686EC1E8F4E5000E0972F /* CGView.swift */,
 				962686EE1E8F909600E0972F /* CGView2.swift */,
 				962686F01E8F9B8700E0972F /* CGView3.swift */,
@@ -294,7 +300,9 @@
 				962686ED1E8F4E5000E0972F /* CGView.swift in Sources */,
 				962686C11E8F4E3A00E0972F /* ViewController.swift in Sources */,
 				962686F11E8F9B8700E0972F /* CGView3.swift in Sources */,
+				96CB43F61EB0862200498116 /* ZMJLoaderButtonProgressView.swift in Sources */,
 				964019F21EA0D40A0064849C /* CGView10.swift in Sources */,
+				96CB43F41EB0857600498116 /* ZMJLoaderButton.swift in Sources */,
 				964019EC1EA0792E0064849C /* CGView6.swift in Sources */,
 				96231E531E9E444900DBE660 /* CGView5.swift in Sources */,
 				964019EE1EA0B5EA0064849C /* CGView7.swift in Sources */,
