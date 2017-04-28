@@ -40,7 +40,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     lazy var successView: UIImageView = {
         let _successView: UIImageView = UIImageView.init(image: UIImage.init(named: "Success"))
-        _successView.frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        _successView.frame = CGRect.init(x: 0, y: 0, width: self.frame.width / 2, height: self.frame.height / 2)
         _successView.alpha = 0
         _successView.center = self.center
         return _successView
@@ -48,15 +48,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     var gameTime: CADisplayLink?
     
-    private var nextProgress: CGFloat {
-        get {
-            return self.nextProgress
-        }
-        
-        set (newValue) {
-            self.nextProgress = newValue
-        }
-    }
+    private var nextProgress: CGFloat
 
     private var circlePoint: CGPoint {
         get {
@@ -81,9 +73,12 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         isComplete = true
         progress = 0.0
         count = 0
+        nextProgress = 0
         super.init(frame: frame)
         
         self.setNextProgress(nextProgress: 0.0)
+        self.drawCircleBorder()
+        self.addSubview(self.progressView)
         self.addSubview(self.successView)
         
         self.isUserInteractionEnabled = false
@@ -106,15 +101,22 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         isPorgressing = true
         
         if fabs(Double(self.nextProgress) - Double(self.progress)) > eps {
-            UIView.animate(withDuration: 6.18 * fabs(Double(self.nextProgress) - Double(self.progress)), delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
-                self.progressView.transform = CGAffineTransform.init(scaleX: self.nextProgress, y: self.nextProgress)
-            }, completion: { (finished: Bool) in
-                self.progress = self.nextProgress
-                self.isPorgressing = false
-                if self.progress == 1 {
-                    self.isComplete = true
-                    self.endAnimation()
-                }
+            UIView.animate(withDuration: 6.18 * fabs(Double(self.nextProgress) - Double(self.progress)),
+                           delay: 0,
+                           options: UIViewAnimationOptions.curveLinear,
+                           animations: {
+                            self.progressView.transform = CGAffineTransform.init(scaleX: self.nextProgress, y: self.nextProgress)
+                            self.startAnimation()
+            },
+                           completion: { (finished: Bool) in
+                            if finished {
+                                self.progress = self.nextProgress
+                                self.isPorgressing = false
+                                if self.progress == 1 {
+                                    self.isComplete = true
+                                    self.endAnimation()
+                                }
+                            }
             })
         }
     }
@@ -161,6 +163,9 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         self.runPointAnimation(point: shap)
     }
     
+    private var buddyCount = 0
+    private var removeCount = 0
+    
     /// 启动动画，向中心吸收
     ///
     /// - Parameter point:
@@ -170,12 +175,16 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         keyAnimation.fillMode = kCAFillModeForwards
         keyAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseIn)
         keyAnimation.duration = 2
-        keyAnimation.isRemovedOnCompletion = true
+        keyAnimation.isRemovedOnCompletion = false
         point.add(keyAnimation, forKey: "moveAnimation")
         
         //移除
+        buddyCount += 1
+        print("生成第 \(buddyCount) 小球")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             point.removeFromSuperlayer()
+            self.removeCount += 1
+            NSLog("移除第 %d 小球", self.removeCount)
         }
     }
     
@@ -187,7 +196,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         let path = UIBezierPath.init()
         path.move(to: point.position)
         //直线
-        path.addLine(to: self.circlePoint)
+       // path.addLine(to: self.circlePoint)
         //二元曲线
         path.addQuadCurve(to: self.circlePoint, controlPoint: ZMJLoaderMath.calcControlPoint(one: self.circlePoint, two: point.position, isRandom: true))
         return path
@@ -206,20 +215,22 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
             self.progressView.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
         }) { (finish: Bool) in
             
-            UIView.animate(withDuration: 2.1, animations: { 
-                viewShot.transform = CGAffineTransform.init(scaleX: 3, y: 3)
-                viewShot.alpha = 0
-                self.successView.alpha = 1
-            }, completion: { (finish: Bool) in
-                viewShot.removeFromSuperview()
-            })
-            
-            UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: { 
-                self.progressView.transform = CGAffineTransform.init(scaleX: 1.8, y: 1.8)
-                self.progressView.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
-            }, completion: { (finish: Bool) in
+            if finish {
+                UIView.animate(withDuration: 2.1, animations: {
+                    viewShot.transform = CGAffineTransform.init(scaleX: 3, y: 3)
+                    viewShot.alpha = 0
+                    self.successView.alpha = 1
+                }, completion: { (finish: Bool) in
+                    finish ? viewShot.removeFromSuperview() : {}()
+                })
                 
-            })
+                UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                    self.progressView.transform = CGAffineTransform.init(scaleX: 1.8, y: 1.8)
+                    self.progressView.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
+                }, completion: { (finish: Bool) in
+                    
+                })
+            }
         }
     }
     

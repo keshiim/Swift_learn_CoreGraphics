@@ -88,22 +88,25 @@ class ViewController: UIViewController {
         imageView.center = CGPoint.init(x: 160, y: 284)
 //        self.view.addSubview(imageView)
         
-        self.drawContentToPdfContext()
+        //self.drawContentToPdfContext()
         
         let view1 = View1.init(frame: .init(x: 0, y: 44, width: self.view.frame.width, height: 44))
         view1.backgroundColor = UIColor.red
-        self.view.addSubview(view1)
+//        self.view.addSubview(view1)
         
         let view2 = View2.init(frame: .init(x: 0, y: 30, width: 100, height: 44))
         view2.backgroundColor = UIColor.blue
-        view1.addSubview(view2)
+//        view1.addSubview(view2)
         
         let button = UIButton.init(type: UIButtonType.custom)
         button.frame = CGRect.init(x: 100, y: 30, width: 60, height: 44)
         button.setTitle("aaaa", for: UIControlState.normal)
         button.backgroundColor = UIColor.green
         button.addTarget(self, action: #selector(buttonAction(button:)), for: UIControlEvents.touchUpInside)
-        view1.addSubview(button)
+//        view1.addSubview(button)
+        let loadButton: ZMJLoaderButton = ZMJLoaderButton.init(frame: .init(x: 0, y: 0, width: 150, height: 150))
+        loadButton.center = self.view.center
+        self.view.addSubview(loadButton)
     }
     
     func buttonAction(button: UIButton) {

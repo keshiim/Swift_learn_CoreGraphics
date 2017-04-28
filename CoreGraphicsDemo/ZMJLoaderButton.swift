@@ -47,10 +47,11 @@ class ZMJLoaderButton: UIButton {
         let path: UIBezierPath = UIBezierPath.init()
         path.move(to: .init(x: centerPos, y: startPos))
         path.addLine(to: .init(x: centerPos, y: 2 * startPos))
+        path.move(to: .init(x: centerPos, y: 2 * startPos))
         path.addLine(to: .init(x: startPos, y: centerPos))
         path.move(to: .init(x: centerPos, y: 2 * startPos))
         path.addLine(to: .init(x: 2 * startPos, y: centerPos))
-        
+
         return path
     }
     
