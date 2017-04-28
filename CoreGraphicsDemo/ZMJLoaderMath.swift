@@ -61,8 +61,9 @@ class ZMJLoaderMath: NSObject {
             }
         }
         let new_x = (o1.y - o2.y) / 2 / k + (o1.x + o2.x) / 2
-        let new_y = -(o1.x - o2.x) / 2 / k - (o1.y + o2.y) / 2
+        let new_y = -((o1.x - o2.x) / 2 / k - (o1.y + o2.y) / 2)//-((o1.x - o2.x) / 2 / k - (o1.y + o2.y) / 2)
         
+        print("控制点：\(CGPoint.init(x: new_x, y: new_y))")
         return CGPoint.init(x: new_x, y: new_y)
     }
     
