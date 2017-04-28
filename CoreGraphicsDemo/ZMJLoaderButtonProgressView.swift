@@ -72,7 +72,6 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     private var count: uint
     
-    
     /// 初始化方法
     ///
     /// - Parameter frame:
