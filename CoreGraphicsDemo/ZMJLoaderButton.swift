@@ -22,7 +22,7 @@ class ZMJLoaderButton: UIButton {
         
     }()
     
-    var progressView: ZMJLoaderButtonProgressView
+    private var progressView: ZMJLoaderButtonProgressView
     
 
     override init(frame: CGRect) {
@@ -40,7 +40,7 @@ class ZMJLoaderButton: UIButton {
     }
 
     
-    func drawArrow() -> UIBezierPath {
+    private func drawArrow() -> UIBezierPath {
         let startPos: CGFloat = self.frame.width / 3.0
         let centerPos: CGFloat = self.frame.height / 2.0
         
@@ -54,14 +54,14 @@ class ZMJLoaderButton: UIButton {
         return path
     }
     
-    func startUpDownLoadAction() {
+    @objc private func startUpDownLoadAction() {
         print("click")
         
         self.arrow.removeFromSuperlayer()
         self.progressView.setNextProgress(nextProgress: 1)
     }
     
-    func addArrow() {
+    private func addArrow() {
         self.arrow.path = self.drawArrow().cgPath
         self.layer.addSublayer(self.arrow)
     }

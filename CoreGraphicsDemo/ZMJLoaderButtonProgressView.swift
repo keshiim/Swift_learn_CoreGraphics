@@ -144,7 +144,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         count += 1
         count %= 50
         if count == 40 {
-            self.readyPointAnimation(center: <#CGPoint#>)
+            self.readyPointAnimation(center: ZMJLoaderMath.calcBeginPoint(O: self.circlePoint, radius: self.circleRadius, coefficent: 2))
         }
     }
     
@@ -189,7 +189,7 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
         //直线
         path.addLine(to: self.circlePoint)
         //二元曲线
-        path.addQuadCurve(to: self.circlePoint, controlPoint: <#T##CGPoint#>)
+        path.addQuadCurve(to: self.circlePoint, controlPoint: ZMJLoaderMath.calcControlPoint(one: self.circlePoint, two: point.position, isRandom: true))
         return path
     }
     
