@@ -195,7 +195,32 @@ class ZMJLoaderButtonProgressView: UIView, ZMJProgressing {
     
     /// 结束动画
     func endAnimation() {
+        self.layer.borderColor = UIColor.clear.cgColor
+        let viewShot: UIView = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver .archivedData(withRootObject: self.progressView)) as! UIView
+        viewShot.alpha = 0.4
+        viewShot.layer.cornerRadius = viewShot.frame.width / 2
+        viewShot.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
         
+        self.addSubview(viewShot)
+        UIView.animate(withDuration: 0.9, delay: 1.2, options: UIViewAnimationOptions.curveEaseInOut, animations: { 
+            self.progressView.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
+        }) { (finish: Bool) in
+            
+            UIView.animate(withDuration: 2.1, animations: { 
+                viewShot.transform = CGAffineTransform.init(scaleX: 3, y: 3)
+                viewShot.alpha = 0
+                self.successView.alpha = 1
+            }, completion: { (finish: Bool) in
+                viewShot.removeFromSuperview()
+            })
+            
+            UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: { 
+                self.progressView.transform = CGAffineTransform.init(scaleX: 1.8, y: 1.8)
+                self.progressView.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
+            }, completion: { (finish: Bool) in
+                
+            })
+        }
     }
     
     public func setNextProgress(nextProgress: CGFloat) {
